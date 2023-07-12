@@ -3,6 +3,8 @@ package com.parking.Parking.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -20,4 +22,21 @@ public class User {
     protected Long id;
     private String login;
     private String pwd ;
+    private String userName;
+
+
+
+
+
+    @OneToMany(mappedBy = "client" ,cascade = CascadeType.ALL)
+    private Set<Vehicule> vehicules;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Parking> parkings;
+
+
+
 }

@@ -20,11 +20,13 @@ public class Parking {
     private Boolean full;
     private String position ;
 
+
+
     @OneToMany(mappedBy = "parking" ,cascade = CascadeType.ALL)
     private Set<Place> places;
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Admin admin;
+    private User user;
 
 }

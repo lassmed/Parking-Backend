@@ -4,8 +4,6 @@ package com.parking.Parking.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.Date;
-
 
 @Entity
 @Getter
@@ -13,25 +11,22 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reservation {
+public class Vehicule {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private Date dateEntrée;
-    private Date dateSortie;
-    private Float prixTotale;
+    private String matricule ;
+    private String type ;
 
 
+    @JsonIgnore
+    @ManyToOne
+    private User client;
 
+    @OneToOne(mappedBy = "vehicule")
+    private Reservation reservation;
 
-
-    @OneToOne
-    @JoinColumn(name = "place_id")
-    private Place place;
-
-    @OneToOne
-    @JoinColumn(name = "vehicule_id")
-    private Vehicule vehicule ;
 }
