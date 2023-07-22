@@ -25,9 +25,6 @@ public class User {
     private String userName;
 
 
-
-
-
     @OneToMany(mappedBy = "client" ,cascade = CascadeType.ALL)
     private Set<Vehicule> vehicules;
 
